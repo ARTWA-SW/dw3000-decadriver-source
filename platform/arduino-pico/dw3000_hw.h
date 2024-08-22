@@ -5,14 +5,14 @@
 #include <stdint.h>
 
 struct dw3000_hw_cfg {
-	int reset_pin;
-	int wakeup_pin;
-	int irq_pin;
-	int spi_cs_pin;
-	int spi_clk_pin;
-	int spi_miso_pin;
-	int spi_mosi_pin;
-	uint32_t spi_max_mhz;
+  int reset_pin;
+  int wakeup_pin;
+  int irq_pin;
+  int spi_cs_pin;
+  int spi_clk_pin;
+  int spi_miso_pin;
+  int spi_mosi_pin;
+  uint32_t spi_max_mhz;
 };
 
 int dw3000_hw_init(const struct dw3000_hw_cfg* cfg);
