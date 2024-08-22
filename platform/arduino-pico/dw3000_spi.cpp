@@ -20,7 +20,7 @@ static const char* LOG_TAG    = "DW3000";
 static SPIClassRP2040* dw_spi = &DW3000_SPI_INSTANCE;
 static const struct dw3000_hw_cfg* dw_hw_cfg;
 
-const SPISettings* _currentSPI = &_fastSPI;
+const SPISettings* _currentSPI = &_slowSPI;
 
 #if CONFIG_DW3000_SPI_TRACE
 void dw3000_spi_trace_in(bool rw, const uint8_t* headerBuffer, uint16_t headerLength, const uint8_t* bodyBuffer, uint16_t bodyLength);
@@ -77,7 +77,7 @@ int dw3000_spi_write(uint16_t headerLength, const uint8_t* headerBuffer, uint16_
   dw_spi->beginTransaction(*_currentSPI);
   digitalWrite(dw_hw_cfg->spi_cs_pin, LOW);
 
-  dw_spi->transfer((void*)headerBuffer, headerLength);
+  dw_spi->transfer((void*)headerBuffer, nullptr, headerLength);
   dw_spi->transfer((void*)bodyBuffer, nullptr, bodyLength);
   deca_usleep(5);
 
@@ -94,7 +94,7 @@ int dw3000_spi_read(uint16_t headerLength, uint8_t* headerBuffer, uint16_t readL
   dw_spi->beginTransaction(*_currentSPI);
   digitalWrite(dw_hw_cfg->spi_cs_pin, LOW);
 
-  dw_spi->transfer((void*)headerBuffer, headerLength);
+  dw_spi->transfer((void*)headerBuffer, nullptr, headerLength);
   dw_spi->transfer(nullptr, (void*)readBuffer, readLength);
   deca_usleep(5);
 

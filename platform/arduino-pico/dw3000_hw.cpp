@@ -106,6 +106,7 @@ void dw3000_hw_reset(void) {
   digitalWrite(dw_hw_cfg->reset_pin, HIGH);
   vTaskDelay(2);
   pinMode(dw_hw_cfg->reset_pin, INPUT);
+  vTaskDelay(10);
 }
 
 /** wakeup either using the WAKEUP pin or SPI CS */
