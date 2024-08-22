@@ -9,7 +9,8 @@
     "srcFilter": "+<decadriver/*> +<platform/arduino-pico/*> -<platform/esp-idf> -<platform/nrf-sdk>",
     "flags": [
       "-I decadriver",
-      "-I platform/arduino-pico"
+      "-I platform/arduino-pico",
+      "-I platform/arduino-pico/priv"
     ]
   }
 }
