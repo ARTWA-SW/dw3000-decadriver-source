@@ -1,0 +1,15 @@
+{
+  "$schema": "https://raw.githubusercontent.com/platformio/platformio-core/develop/platformio/assets/schema/library.json",
+  "name": "dw3000-decadriver-source",
+  "version": "1.0.0",
+  "platforms": "rp2040",
+  "build": {
+    "includeDir": ".",
+    "srcDir": ".",
+    "srcFilter": "+<decadriver/*> +<platform/arduino-pico/*> -<platform/esp-idf> -<platform/nrf-sdk>",
+    "flags": [
+      "-I decadriver",
+      "-I platform/arduino-pico"
+    ]
+  }
+}
